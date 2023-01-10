@@ -1,0 +1,37 @@
+<style>
+    /* Add your CSS styles here */
+    form {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"] {
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>

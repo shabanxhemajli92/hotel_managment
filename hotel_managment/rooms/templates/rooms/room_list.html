@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room List</title>
+    <link rel="stylesheet" type="text/css" href="/home/dci-admin/Documents/hotel_managment/hotel_managment/rooms/static/rooms/style.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Price</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.room_number }}</td>
+            <td>{{ room.room_type }}</td>
+            <td>{{ room.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
