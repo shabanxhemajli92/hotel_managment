@@ -1,8 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Room List</title>
-    <link rel="stylesheet" type="text/css" href="/home/dci-admin/Documents/hotel_managment/hotel_managment/rooms/static/rooms/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'rooms/style.css' %}">
 </head>
 <body>
     <table>
@@ -19,5 +20,51 @@
         </tr>
         {% endfor %}
     </table>
+    <style>
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        width: 50%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    label {
+        width: 30%;
+        margin-right: 10px;
+        font-size: 18px;
+        text-align: right;
+    }
+    
+    input[type="text"], input[type="submit"] {
+        width: 40%;
+        padding: 12px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    </style>
+    <form action="{% url 'room_list' %}" method="get">
+        <label for="room_type">Room Type:</label>
+        <input type="text" id="room_type" name="room_type">
+    
+        <label for="price_min">Price Min:</label>
+        <input type="text" id="price_min" name="price_min">
+    
+        <label for="price_max">Price Max:</label>
+        <input type="text" id="price_max" name="price_max">
+        <input type="submit" value="Filter">
+    </form>
 </body>
 </html>

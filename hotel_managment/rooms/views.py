@@ -30,6 +30,8 @@ def room_list(request):
         rooms = rooms.filter(price__lte=price_max)
     return render(request, 'rooms/room_list.html', {'rooms': rooms})
 
+
+
 def client_create(request):
     if request.method == 'POST':
         form = ClientForm(request.POST)
@@ -37,7 +39,7 @@ def client_create(request):
             client_name = form.cleaned_data['name']
             client_email = form.cleaned_data['email']
             client_phone = form.cleaned_data['phone_number']
-            client = Client.objects.create(client_name=client_name, client_email=client_email,client_phone=client_phone)
+            client = Client.objects.create(name=client_name, email=client_email,phone_number=client_phone)
             return redirect('client_list')
     else:
         form = ClientForm()

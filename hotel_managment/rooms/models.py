@@ -6,6 +6,9 @@ class Client(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=20)
 
+    def __str__(self):
+        return f"name: {self.name} email: {self.email} phone nr: {self.phone_number}"
+
 class Room(models.Model):
     room_number = models.CharField(max_length=10)
     room_type = models.CharField(max_length=255)
