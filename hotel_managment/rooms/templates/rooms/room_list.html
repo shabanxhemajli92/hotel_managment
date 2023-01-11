@@ -55,16 +55,46 @@
         margin-top: 20px;
     }
     </style>
-    <form action="{% url 'room_list' %}" method="get">
-        <label for="room_type">Room Type:</label>
-        <input type="text" id="room_type" name="room_type">
+
+<form action="{% url 'room_list' %}" method="get">
+    <label for="room_type">Room Type:</label>
+    <input type="text" id="room_type" name="room_type">
     
-        <label for="price_min">Price Min:</label>
-        <input type="text" id="price_min" name="price_min">
+    <label for="price_min">Price Min:</label>
+    <input type="text" id="price_min" name="price_min">
     
-        <label for="price_max">Price Max:</label>
-        <input type="text" id="price_max" name="price_max">
-        <input type="submit" value="Filter">
-    </form>
-</body>
-</html>
+    <label for="price_max">Price Max:</label>
+    <input type="text" id="price_max" name="price_max">
+    <input type="submit" value="Filter">
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Price</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.room_number }}</td>
+                    <td>{{ room.room_type }}</td>
+                    <td>{{ room.price }}</td>
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="room_id" value="{{ room.id }}">
+                            <input type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure you want to delete this room?');">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get" action="{% url 'update_room' room.id %}">
+                            <input type="submit" value="Update">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>

@@ -1,0 +1,24 @@
+{% load static %}
+<head>
+    <title>Client List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'rooms/style.css' %}">
+</head>
+  
+<table>
+    <tr>
+        <th>Client</th>
+        <th>Room</th>
+        <th>Check-in date</th>
+        <th>Check-out date</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td>{{ booking.client.name }}</td>
+
+        <td>{{ booking.room.name }}</td>
+        
+        <td>{{ booking.check_in_date }}</td>
+        <td>{{ booking.check_out_date }}</td>
+    </tr>
+    {% endfor %}
+</table>

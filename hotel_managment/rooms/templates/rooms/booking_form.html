@@ -33,7 +33,5 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="hidden" name="client" value="{{client.id}}">
-    <input type="hidden" name="room" value="{{room.id}}">
-    <input type="hidden" value="Submit">
+    <input type="submit" value="Create Booking">
 </form>
